@@ -23,25 +23,7 @@ pipeline {
                  sh 'mvn clean install'
              }
          }
-        /*stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t devsahamerlin/listingrestapi .'
-                }
-            }
-        }
-        stage('Push image to docker Hub'){
-            steps{
-                script{
 
-                    withCredentials([string(credentialsId: 'jenkins-dockerhub-pwd', variable: 'jenkinsdockerhubpwd')]) {
-                    sh 'docker login -u devsahamerlin -p ${jenkinsdockerhubpwd}'
-                    }
-
-                   sh 'docker push devsahamerlin/listingrestapi'
-                }
-            }
-        }*/
         stage('Deploy to k8s'){
             steps{
                 script{
